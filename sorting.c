@@ -1,5 +1,21 @@
 #include "stdio.h"
 
+void insertion(int *list, int n){
+    for (int i = 1; i < n; i++)
+    {
+        int j = i;
+        int t = list[i]; // Current integer
+
+        // Move integer to the right if it is smaller than current number
+        while (j > 0 && list[j-1] > t)
+        {
+            list[j] = list[j-1];
+            j = j-1;
+        }
+        list[j] = t;
+    }
+}
+
 void selection(int *list, int sz){
     for (int i = 0; i < sz-1; i++)
     {
@@ -35,7 +51,8 @@ int main() {
     }
     puts("");
 
-    selection(l, n);
+    insertion(l, n);
+    // selection(l, n);
 
     for (int i = 0; i < n; i++)
     {
