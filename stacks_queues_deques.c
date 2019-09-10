@@ -38,9 +38,22 @@ void pop_top(darray *a){
     a->array = tmp.array;    
 }
 
+void pop_bottom(darray *a){
+    darray tmp;
+    alloc_array(&tmp, (a->used)-1);
+
+    for (int i = 1; i < (a->used); i++)
+    {
+        add_top(&tmp, a->array[i]);
+    }
+    a->size = tmp.size;
+    a->used = tmp.used;
+    free(a->array);
+    a->array = tmp.array;
+}
+
 int main() {
     int n;
-
     darray lista;
     scanf("%d", &n);
     alloc_array(&lista, n);
@@ -58,13 +71,25 @@ int main() {
     {
         printf("%d", lista.array[i]);
     }
+    puts("");
+
     pop_top(&lista);
     pop_top(&lista);
     pop_top(&lista);
+
     for (size_t i = 0; i < lista.used; i++)
     {
         printf("%d", lista.array[i]);
     }
     puts("");
+
+    pop_bottom(&lista);
+
+    for (size_t i = 0; i < lista.used; i++)
+    {
+        printf("%d", lista.array[i]);
+    }
+    puts("");
+
     return 0;
 }
