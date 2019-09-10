@@ -14,7 +14,7 @@ void alloc_array(darray *a, int init_size){
     a->used = 0;
 }
 
-void add_top(darray *a, int elem){
+void add_front(darray *a, int elem){
     if (a->used == a->size)
     {
         a->size += 1;
@@ -24,27 +24,41 @@ void add_top(darray *a, int elem){
     a->used += 1;
 }
 
-void pop_top(darray *a){  
+void add_back(darray *a, int elem){
+    darray tmp;
+    alloc_array(&tmp, (a->used)+1);
+
+    for (size_t i = 0; i < a->used; i++)
+    {
+        tmp.array[i+1] = a->array[i];
+    }
+
+    tmp.array[0] = elem;
+    a->array = tmp.array;
+}
+
+void pop_front(darray *a){  
     darray tmp;
     alloc_array(&tmp, (a->used)-1);
 
     for (int i = 0; i < (a->used)-1; i++)
     {
-        add_top(&tmp, a->array[i]);
+        add_front(&tmp, a->array[i]);
     }
+
     a->size = tmp.size;
     a->used = tmp.used;
     free(a->array);
     a->array = tmp.array;    
 }
 
-void pop_bottom(darray *a){
+void pop_back(darray *a){
     darray tmp;
     alloc_array(&tmp, (a->used)-1);
 
     for (int i = 1; i < (a->used); i++)
     {
-        add_top(&tmp, a->array[i]);
+        add_front(&tmp, a->array[i]);
     }
     a->size = tmp.size;
     a->used = tmp.used;
@@ -60,12 +74,12 @@ int main() {
 
     for (size_t i = 0; i < n; i++)
     {   
-        add_top(&lista, i);
+        add_front(&lista, i);
         printf("%d", lista.array[i]);
     }
     puts("");
 
-    add_top(&lista, n);
+    add_front(&lista, n);
     
     for (size_t i = 0; i < lista.used; i++)
     {
@@ -73,9 +87,9 @@ int main() {
     }
     puts("");
 
-    pop_top(&lista);
-    pop_top(&lista);
-    pop_top(&lista);
+    pop_front(&lista);
+    pop_front(&lista);
+    pop_front(&lista);
 
     for (size_t i = 0; i < lista.used; i++)
     {
@@ -83,7 +97,15 @@ int main() {
     }
     puts("");
 
-    pop_bottom(&lista);
+    pop_back(&lista);
+
+    for (size_t i = 0; i < lista.used; i++)
+    {
+        printf("%d", lista.array[i]);
+    }
+    puts("");
+
+    add_back(&lista, n*4);
 
     for (size_t i = 0; i < lista.used; i++)
     {
