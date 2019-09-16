@@ -45,11 +45,16 @@ int find(node head, int value)
 {
     node tmp;
     tmp = head;
-    for (int i = 0; tmp->next != NULL; i++)
+    for (int i = 0;; i++)
     {
         if (tmp->data == value)
         {
             return i;
+        }
+
+        if (tmp->next == NULL)
+        {
+            break;
         }
 
         tmp = tmp->next;
@@ -57,13 +62,74 @@ int find(node head, int value)
     return -1;
 }
 
+node add_node_start(node head, int data)
+{
+    node new, tmp = head;
+
+    new = create_node();
+    new->next = tmp;
+    new->data = data;
+
+    return new;
+}
+
+node remove_node(node head)
+{
+    node prox, tmp = head;
+    for (int i = 0;; i++)
+    {
+        prox = tmp->next;
+        if (prox->next == NULL)
+        {
+            free(prox);
+            tmp->next = NULL;
+            return head;
+        }
+        tmp = prox;
+    }
+}
+
+node remove_node_start(node head)
+{
+    node prox, tmp = head;
+
+    prox = tmp->next;
+    free(tmp);
+
+    return prox;
+}
+
 void print_ll(node head)
 {
     node p = head;
     while (p->next != NULL)
     {
+        printf("%d ", p->data);
         p = p->next;
-        printf("%d\n", p->data);
+    }
+    printf("%d ", p->data);
+    puts("");
+}
+
+node reverse_ll(node head)
+{
+    node agr, prox, ant;
+    agr = head;
+
+    ant = NULL;
+    for (int i = 0;; i++)
+    {
+        prox = agr->next;
+
+        agr->next = ant;
+
+        if (prox == NULL)
+        {
+            return agr;
+        }
+
+        ant = agr;
+        agr = prox;
     }
 }
 
