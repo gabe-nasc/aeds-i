@@ -1,13 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node
+// struct Node
+// {
+//     int data;
+//     struct node *next;
+// };
+
+// typedef struct Node *node;
+
+typedef struct Node
 {
     int data;
     struct node *next;
-};
-
-typedef struct Node *node;
+} * node;
 
 // Starts a new node
 node create_node()
@@ -109,6 +115,39 @@ void print_ll(node head)
     }
     printf("%d ", p->data);
     puts("");
+}
+
+node insert_ordered(node head, int n)
+{
+    node prox, tmp, new;
+    tmp = head;
+    if (tmp->data > n)
+    {
+        return add_node_start(head, n);
+    }
+    
+    tmp = tmp->next;
+    prox = tmp->next;
+    while (1)
+    {
+        if (prox == NULL)
+        {
+            return add_node(head, n);
+        }
+        
+        if (prox->data >= n)
+        {
+            new = create_node();
+            new->data = n;
+            new->next = prox;
+            tmp->next = new;
+
+            return head;
+        }
+        
+        tmp = tmp->next;
+        prox = tmp->next;
+    }
 }
 
 node reverse_ll(node head)
