@@ -33,11 +33,27 @@ struct nodeB* allocB(int data){
     new->pai = NULL;
     new->maior = NULL;
     new->menor = NULL;
-    
+
     return new;
 }
 
-void insert_A(struct nodeA *head, int data){
+struct nodeA* find(struct nodeA* head, int data)
+{
+
+    if (head == NULL || head->data == data)
+    {
+       return head;
+     }
+
+    if (head->data < data)
+    {
+       return find(head->maior, data);
+    }
+
+    return find(head->menor, data);
+}
+
+void insertA(struct nodeA *head, int data){
     if (head->data > data)
     {
         if (head->menor == NULL)
@@ -46,8 +62,8 @@ void insert_A(struct nodeA *head, int data){
             head->menor->pai = head;
             return;
         }
-        
-        insert_A(head->menor, data);
+;
+        insertA(head->menor, data);
     }
     else
     {
@@ -57,7 +73,66 @@ void insert_A(struct nodeA *head, int data){
             head->maior->pai = head;
             return;
         }
-        insert_A(head->maior, data);
+        insertA(head->maior, data);
+    }
+}
+
+void insertB_aux(struct nodeB *head, int data){
+    if (head->data > data)
+    {
+        if (head->menor == NULL)
+        {
+            head->menor = allocB(data);
+            head->menor->pai = head;
+            return;
+        }
+;
+        insertB_aux(head->menor, data);
+    }
+    else
+    {
+        if (head->maior == NULL)
+        {
+            head->maior = allocB(data);
+            head->maior->pai = head;
+            return;
+        }
+        insertB_aux(head->maior, data);
+    }
+}
+
+void insertB(struct nodeA *head, int p1, int p2){
+    struct nodeA *ptr1 = find(head, p1);
+    struct nodeA *ptr2 = find(head, p2);
+    
+    if (ptr1->amgs == NULL)
+    {
+        ptr1->amgs = allocB(p2);
+    }
+    else
+    {
+        insertB_aux(ptr1->amgs, p2);
+    }
+    
+
+    if (ptr2->amgs == NULL)
+    {
+        ptr2->amgs = allocB(p1);
+    }
+    else
+    {
+        insertB_aux(ptr2->amgs, p1);
+    }
+    
+}
+
+void print_ordem(struct nodeB *head)
+{
+    if (head != NULL)
+    {
+        print_ordem(head->menor);
+        printf("%d", head->data);
+        print_ordem(head->maior);
     }
 }
 
