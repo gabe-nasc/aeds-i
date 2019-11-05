@@ -53,6 +53,22 @@ struct nodeA* find(struct nodeA* head, int data)
     return find(head->menor, data);
 }
 
+struct nodeB* findB(struct nodeB* head, int data)
+{
+
+    if (head == NULL || head->data == data)
+    {
+       return head;
+     }
+
+    if (head->data < data)
+    {
+       return findB(head->maior, data);
+    }
+
+    return findB(head->menor, data);
+}
+
 void insertA(struct nodeA *head, int data){
     if (head->data > data)
     {
@@ -126,12 +142,25 @@ void insertB(struct nodeA *head, int p1, int p2){
     
 }
 
-void print_ordem(struct nodeB *head)
+int consulta_amizade(struct nodeA *head, int a, int b){
+    struct nodeA *p1 = find(head, a);
+
+    if (findB(p1->amgs, b) != NULL)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }    
+}
+
+void print_ordem(struct nodeA *head)
 {
     if (head != NULL)
     {
         print_ordem(head->menor);
-        printf("%d", head->data);
+        printf("%d ", head->data);
         print_ordem(head->maior);
     }
 }
