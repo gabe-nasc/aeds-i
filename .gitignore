@@ -54,3 +54,4 @@ dkms.conf
 # Other files
 in
 test.c
+out

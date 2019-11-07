@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
+// Node A, utilizado na BST principal que guarda as informações sobre cada pessoa
 struct nodeA {
     int data;
     char nome[101];
@@ -11,6 +12,7 @@ struct nodeA {
     struct nodeB *amgs;
 };
 
+// Node B, utilizado nas BST's que guardam as amizades de cada pessoa
 struct nodeB {
     int data;
     struct nodeB *pai;
@@ -18,6 +20,7 @@ struct nodeB {
     struct nodeB *maior;
 };
 
+// Função auxiliar que alloca em memoria um espaço para um Node A
 struct nodeA* allocA(int data, char *nome){
     struct nodeA *new = (struct nodeA *) malloc(sizeof(struct nodeA));
     
@@ -32,6 +35,7 @@ struct nodeA* allocA(int data, char *nome){
     return new;
 }
 
+// Função auxiliar que alloca em memoria um espaço para um Node B
 struct nodeB* allocB(int data){
     struct nodeB *new = (struct nodeB *) malloc(sizeof(struct nodeB));
     new->data = data;
@@ -42,6 +46,7 @@ struct nodeB* allocB(int data){
     return new;
 }
 
+// Função que busca em uma BST do tipo A um determinado node pelo seu valor
 struct nodeA* find(struct nodeA* head, int data)
 {
 
@@ -58,6 +63,7 @@ struct nodeA* find(struct nodeA* head, int data)
     return find(head->menor, data);
 }
 
+// Função que busca em uma BST do tipo B um determinado node pelo seu valor
 struct nodeB* findB(struct nodeB* head, int data)
 {
 
@@ -74,6 +80,7 @@ struct nodeB* findB(struct nodeB* head, int data)
     return findB(head->menor, data);
 }
 
+// Função que dada uma BST do tipo A, insere um novo node no local apropriado
 void insertA(struct nodeA *head, int data, char *nome){
     if (head->data > data)
     {
@@ -98,6 +105,7 @@ void insertA(struct nodeA *head, int data, char *nome){
     }
 }
 
+// Função auxiliar à insertB, faz um trabalho similar a insertA
 void insertB_aux(struct nodeB *head, int data){
     if (head->data > data)
     {
@@ -122,6 +130,7 @@ void insertB_aux(struct nodeB *head, int data){
     }
 }
 
+// Função que dada uma BST do tipo B, insere um novo node no local apropriado
 void insertB(struct nodeA *head, int p1, int p2){
     struct nodeA *ptr1 = find(head, p1);
     struct nodeA *ptr2 = find(head, p2);
@@ -147,6 +156,7 @@ void insertB(struct nodeA *head, int p1, int p2){
     
 }
 
+// Função que verifica se duas pessoas possuem uma amizade
 int consulta_amizade(struct nodeA *head, int a, int b){
     struct nodeA *p1 = find(head, a);
 
@@ -160,6 +170,7 @@ int consulta_amizade(struct nodeA *head, int a, int b){
     }    
 }
 
+// Função que imprime no terminal os id's de uma BST do tipo A em ordem crescente
 void print_ordemA(struct nodeA *head)
 {
     if (head != NULL)
@@ -170,6 +181,7 @@ void print_ordemA(struct nodeA *head)
     }
 }
 
+// Função que imprime no terminal os id's de uma BST do tipo B em ordem crescente
 void print_ordemB(struct nodeB *head)
 {
     if (head != NULL)
@@ -180,6 +192,7 @@ void print_ordemB(struct nodeB *head)
     }
 }
 
+// Função que busca uma pessoa e imprime todos os seus dados
 void info(struct nodeA *head, int data){
     struct nodeA *ptr = find(head, data);
     printf("%s\nID: %d\nAmizades: ", ptr->nome, ptr->data);
@@ -189,9 +202,9 @@ void info(struct nodeA *head, int data){
 
 int main(int argc, char const *argv[])
 {
-    struct nodeA *head;
-    int count = 1;
-    char cmd[120];
+    struct nodeA *head; // Cabeça da BST principal
+    int count = 1; // Contador de pessoas
+    char cmd[120]; // Comando inserido pelo usuário
 
     while (1)
     {
@@ -199,14 +212,17 @@ int main(int argc, char const *argv[])
         scanf("%[^\n]%*c", cmd);
         puts("");
 
+        // Imprime a lista de comandos suportados
         if (!strcmp(cmd, "help"))
         {
             puts("help - mostra ajuda com comandos");
             puts("new x - adiciona uma nova pessoa (x) na rede");
+            puts("bsc x - busca as informações de x");
             puts("nfd x y - adicionar uma nova amizade entre (x) e (y)");
             puts("chk x y - checar se existe amizade entre (x) e (y)");
             puts("prt - imprime todas as pessoas na rede");
         }
+        //
         else if (!strncmp(cmd, "new", 3))
         {
             if (head == NULL)
