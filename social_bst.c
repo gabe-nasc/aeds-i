@@ -200,6 +200,97 @@ void info(struct nodeA *head, int data){
     puts("");
 }
 
+struct nodeB *deleteB(struct nodeB *head, int data){
+    if (head == NULL){
+        return head;
+    } 
+
+    if (data < head->data){
+        head->menor = deleteB(head->menor, data); 
+    }
+
+    else if (data > head->data){
+        head->maior = deleteB(head->maior, data); 
+    }
+
+    else
+    { 
+        if (head->menor == NULL) 
+        { 
+            struct nodeB *tmp = head->maior; 
+            free(head); 
+            return tmp; 
+        } 
+        
+        else if (head->maior == NULL) 
+        { 
+            struct nodeB *tmp = head->menor; 
+            free(head); 
+            return tmp; 
+        } 
+
+        struct nodeB *tmp;
+        tmp = head->maior;
+        while(tmp != NULL && tmp->menor != NULL){
+            tmp = tmp->menor;
+        }
+
+        head->data = tmp->data;
+        head->maior = deleteB(head->maior, tmp->data); 
+    } 
+    return head;
+}
+
+struct nodeA *deleteA(struct nodeA *head, int data){
+    if (head == NULL){
+        return head;
+    } 
+
+    if (data < head->data){
+        head->menor = deleteA(head->menor, data); 
+    }
+
+    else if (data > head->data){
+        head->maior = deleteA(head->maior, data); 
+    }
+
+    else
+    { 
+        if (head->menor == NULL) 
+        { 
+            struct nodeA *tmp = head->maior; 
+            free(head); 
+            return tmp; 
+        } 
+        
+        else if (head->maior == NULL) 
+        { 
+            struct nodeA *tmp = head->menor; 
+            free(head); 
+            return tmp; 
+        } 
+
+        struct nodeA *tmp;
+        tmp = head->maior;
+        while(tmp != NULL && tmp->menor != NULL){
+            tmp = tmp->menor;
+        }
+
+        head->data = tmp->data;
+        head->amgs = tmp->amgs;
+        head->maior = deleteA(head->maior, tmp->data); 
+    } 
+    return head;
+}
+
+void deleteAmgs(struct nodeA *head, int data){
+    if (head != NULL)
+    {
+        head->amgs = deleteB(head->amgs, data);
+        deleteAmgs(head->menor, data);
+        deleteAmgs(head->maior, data);
+    }
+}
 int main(int argc, char const *argv[])
 {
     struct nodeA *head; // Cabeça da BST principal
@@ -217,6 +308,7 @@ int main(int argc, char const *argv[])
         {
             puts("help - mostra ajuda com comandos");
             puts("new x - adiciona uma nova pessoa (x) na rede");
+            puts("del y - deleta uma pessoa (x) da rede");
             puts("bsc x - busca as informações de x");
             puts("nfd x y - adicionar uma nova amizade entre (x) e (y)");
             puts("chk x y - checar se existe amizade entre (x) e (y)");
@@ -259,11 +351,18 @@ int main(int argc, char const *argv[])
             sscanf(cmd, "%*s %d", &p1);
             info(head, p1);
         }
+        else if (!strncmp(cmd, "del", 3))
+        {
+
+            int p1;
+            sscanf(cmd, "%*s %d", &p1);
+            deleteA(head, p1);
+            deleteAmgs(head, p1);
+        }
         else if (!strcmp(cmd, "quit"))
         {
             break;
         }
-        
     }
 
     return 0;
