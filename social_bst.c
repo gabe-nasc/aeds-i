@@ -314,7 +314,7 @@ int main(int argc, char const *argv[])
             puts("chk x y - checar se existe amizade entre (x) e (y)");
             puts("prt - imprime todas as pessoas na rede");
         }
-        //
+
         else if (!strncmp(cmd, "new", 3))
         {
             if (head == NULL)
@@ -327,18 +327,21 @@ int main(int argc, char const *argv[])
             }
             count += 1;
         }
+
         else if (!strncmp(cmd, "nfd", 3))
         {
             int p1, p2;
             sscanf(cmd, "%*s %d %d", &p1, &p2);
             insertB(head, p1, p2);
         }
+
         else if (!strncmp(cmd, "chk", 3))
         {
             int p1, p2;
             sscanf(cmd, "%*s %d %d", &p1, &p2);
             printf("%d\n", consulta_amizade(head, p1, p2));
         }
+
         else if (!strncmp(cmd, "prt", 3))
         {
             print_ordemA(head);
@@ -356,9 +359,10 @@ int main(int argc, char const *argv[])
 
             int p1;
             sscanf(cmd, "%*s %d", &p1);
-            deleteA(head, p1);
+            head = deleteA(head, p1);
             deleteAmgs(head, p1);
         }
+
         else if (!strcmp(cmd, "quit"))
         {
             break;
