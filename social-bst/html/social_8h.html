@@ -81,6 +81,7 @@ Estruturas de Dados</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node A, utilizado na BST principal que guarda as informações sobre cada pessoa.  <a href="structnodeA.html#details">Mais...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnodeB.html">nodeB</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node B, utilizado nas BSTs que guardam as amizades de cada pessoa.  <a href="structnodeB.html#details">Mais...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -196,163 +197,6 @@ Funções</h2></td></tr>
 
 </div>
 </div>
-<a id="af062feb0430f0b531793acd4c82b6017"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af062feb0430f0b531793acd4c82b6017">&#9670;&nbsp;</a></span>consulta_amizade()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int consulta_amizade </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Função que verifica se dois nó de tipo A possuem conexão através de seus nós de tipo B. </p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p1</td><td>Pessoa 1 </td></tr>
-    <tr><td class="paramname">p2</td><td>Pessoa 2 </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Retorna</dt><dd>1 caso exista a conexão, 0 caso contrário </dd></dl>
-
-</div>
-</div>
-<a id="af7b6f00991f2441eb9b2fb22ecc388f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7b6f00991f2441eb9b2fb22ecc388f0">&#9670;&nbsp;</a></span>deleteA()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structnodeA.html">nodeA</a>* deleteA </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Função que deleta um nó de uma BST de tipo A. </p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST </td></tr>
-    <tr><td class="paramname">data</td><td>Valor do nó a ser deletado </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Retorna</dt><dd>Ponteiro para o nó cabeça da BST modificada </dd></dl>
-
-</div>
-</div>
-<a id="ac8569128891422527f361e58dbf6a146"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8569128891422527f361e58dbf6a146">&#9670;&nbsp;</a></span>deleteAmgs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void deleteAmgs </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Função que deleta um nó de todas as BSTs de Amizades de todos os nós de uma BST de tipo A. </p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST de tipo A </td></tr>
-    <tr><td class="paramname">Valor</td><td>do nó a ser deletado </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a86d192f1655ca8ea2b7a0ef1571295fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86d192f1655ca8ea2b7a0ef1571295fd">&#9670;&nbsp;</a></span>deleteB()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">struct <a class="el" href="structnodeB.html">nodeB</a>* deleteB </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeB.html">nodeB</a> *&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Função que deleta um nó de uma BST de tipo B. </p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST </td></tr>
-    <tr><td class="paramname">data</td><td>Valor do nó a ser deletado </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Retorna</dt><dd>Ponteiro para o nó cabeça da BST modificada </dd></dl>
-
-</div>
-</div>
 <a id="a982806897c10c78fd70e92331fa6f0a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a982806897c10c78fd70e92331fa6f0a0">&#9670;&nbsp;</a></span>find()</h2>
 
@@ -429,43 +273,6 @@ Funções</h2></td></tr>
 
 </div>
 </div>
-<a id="a15fd7a22b54eaa5ddd084cf3d5a3a5be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a15fd7a22b54eaa5ddd084cf3d5a3a5be">&#9670;&nbsp;</a></span>info()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void info </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
-          <td class="paramname"><em>head</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Função que busca um nó e imprime todos os seus dados. </p>
-<dl class="params"><dt>Parâmetros</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST em que este nó está inserido </td></tr>
-    <tr><td class="paramname">data</td><td>Valor do nó a ser mostrado </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="afd24a78dea125213f054fcc154e7d0aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd24a78dea125213f054fcc154e7d0aa">&#9670;&nbsp;</a></span>insertA()</h2>
 
@@ -504,6 +311,43 @@ Funções</h2></td></tr>
     <tr><td class="paramname">head</td><td>Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido </td></tr>
     <tr><td class="paramname">data</td><td>Valor do nó a ser inserido </td></tr>
     <tr><td class="paramname">nome</td><td>Nome da pessoa a ser cadastrada </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aafee258cdaa10980e5f54f98b2a93c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafee258cdaa10980e5f54f98b2a93c0c">&#9670;&nbsp;</a></span>insertB_aux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void insertB_aux </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnodeB.html">nodeB</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função auxiliar à insertB, faz um trabalho similar a insertA. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido </td></tr>
+    <tr><td class="paramname">data</td><td>Valor do nó a ser inserido </td></tr>
   </table>
   </dd>
 </dl>
@@ -554,23 +398,29 @@ Funções</h2></td></tr>
 
 </div>
 </div>
-<a id="aafee258cdaa10980e5f54f98b2a93c0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafee258cdaa10980e5f54f98b2a93c0c">&#9670;&nbsp;</a></span>insertB_aux()</h2>
+<a id="af062feb0430f0b531793acd4c82b6017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af062feb0430f0b531793acd4c82b6017">&#9670;&nbsp;</a></span>consulta_amizade()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void insertB_aux </td>
+          <td class="memname">int consulta_amizade </td>
           <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structnodeB.html">nodeB</a> *&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
           <td class="paramname"><em>head</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>data</em>&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -580,14 +430,15 @@ Funções</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Função auxiliar à insertB, faz um trabalho similar a insertA. </p>
+<p>Função que verifica se dois nó de tipo A possuem conexão através de seus nós de tipo B. </p>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
-    <tr><td class="paramname">head</td><td>Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido </td></tr>
-    <tr><td class="paramname">data</td><td>Valor do nó a ser inserido </td></tr>
+    <tr><td class="paramname">p1</td><td>Pessoa 1 </td></tr>
+    <tr><td class="paramname">p2</td><td>Pessoa 2 </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Retorna</dt><dd>1 caso exista a conexão, 0 caso contrário </dd></dl>
 
 </div>
 </div>
@@ -637,6 +488,156 @@ Funções</h2></td></tr>
 <dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">head</td><td>Ponteiro para a cabeça da BST do tipo B </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a15fd7a22b54eaa5ddd084cf3d5a3a5be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15fd7a22b54eaa5ddd084cf3d5a3a5be">&#9670;&nbsp;</a></span>info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void info </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que busca um nó e imprime todos os seus dados. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST em que este nó está inserido </td></tr>
+    <tr><td class="paramname">data</td><td>Valor do nó a ser mostrado </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a86d192f1655ca8ea2b7a0ef1571295fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d192f1655ca8ea2b7a0ef1571295fd">&#9670;&nbsp;</a></span>deleteB()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structnodeB.html">nodeB</a>* deleteB </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnodeB.html">nodeB</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que deleta um nó de uma BST de tipo B. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST </td></tr>
+    <tr><td class="paramname">data</td><td>Valor do nó a ser deletado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Ponteiro para o nó cabeça da BST modificada </dd></dl>
+
+</div>
+</div>
+<a id="af7b6f00991f2441eb9b2fb22ecc388f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7b6f00991f2441eb9b2fb22ecc388f0">&#9670;&nbsp;</a></span>deleteA()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structnodeA.html">nodeA</a>* deleteA </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que deleta um nó de uma BST de tipo A. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST </td></tr>
+    <tr><td class="paramname">data</td><td>Valor do nó a ser deletado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>Ponteiro para o nó cabeça da BST modificada </dd></dl>
+
+</div>
+</div>
+<a id="ac8569128891422527f361e58dbf6a146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8569128891422527f361e58dbf6a146">&#9670;&nbsp;</a></span>deleteAmgs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deleteAmgs </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structnodeA.html">nodeA</a> *&#160;</td>
+          <td class="paramname"><em>head</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função que deleta um nó de todas as BSTs de Amizades de todos os nós de uma BST de tipo A. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>Ponteiro para o nó cabeça da BST de tipo A </td></tr>
+    <tr><td class="paramname">Valor</td><td>do nó a ser deletado </td></tr>
   </table>
   </dd>
 </dl>

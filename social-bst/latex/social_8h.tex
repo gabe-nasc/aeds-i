@@ -11,7 +11,7 @@ Header de funções do Social-\/\+B\+ST.
 struct \mbox{\hyperlink{structnodeA}{nodeA}}
 \begin{DoxyCompactList}\small\item\em Node A, utilizado na B\+ST principal que guarda as informações sobre cada pessoa. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structnodeB}{nodeB}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Node B, utilizado nas B\+S\+Ts que guardam as amizades de cada pessoa. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
@@ -89,83 +89,6 @@ Função auxiliar que alloca em memoria um espaço para um Node B.
 \begin{DoxyReturn}{Retorna}
 Ponteiro para o novo nó 
 \end{DoxyReturn}
-\mbox{\Hypertarget{social_8h_af062feb0430f0b531793acd4c82b6017}\label{social_8h_af062feb0430f0b531793acd4c82b6017}} 
-\index{social.h@{social.h}!consulta\_amizade@{consulta\_amizade}}
-\index{consulta\_amizade@{consulta\_amizade}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{consulta\_amizade()}{consulta\_amizade()}}
-{\footnotesize\ttfamily int consulta\+\_\+amizade (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
-
-
-
-Função que verifica se dois nó de tipo A possuem conexão através de seus nós de tipo B. 
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em p1} & Pessoa 1 \\
-\hline
-{\em p2} & Pessoa 2 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Retorna}
-1 caso exista a conexão, 0 caso contrário 
-\end{DoxyReturn}
-\mbox{\Hypertarget{social_8h_af7b6f00991f2441eb9b2fb22ecc388f0}\label{social_8h_af7b6f00991f2441eb9b2fb22ecc388f0}} 
-\index{social.h@{social.h}!deleteA@{deleteA}}
-\index{deleteA@{deleteA}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{deleteA()}{deleteA()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structnodeA}{nodeA}}$\ast$ deleteA (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
-
-
-
-Função que deleta um nó de uma B\+ST de tipo A. 
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em head} & Ponteiro para o nó cabeça da B\+ST \\
-\hline
-{\em data} & Valor do nó a ser deletado \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Retorna}
-Ponteiro para o nó cabeça da B\+ST modificada 
-\end{DoxyReturn}
-\mbox{\Hypertarget{social_8h_ac8569128891422527f361e58dbf6a146}\label{social_8h_ac8569128891422527f361e58dbf6a146}} 
-\index{social.h@{social.h}!deleteAmgs@{deleteAmgs}}
-\index{deleteAmgs@{deleteAmgs}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{deleteAmgs()}{deleteAmgs()}}
-{\footnotesize\ttfamily void delete\+Amgs (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
-
-
-
-Função que deleta um nó de todas as B\+S\+Ts de Amizades de todos os nós de uma B\+ST de tipo A. 
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em head} & Ponteiro para o nó cabeça da B\+ST de tipo A \\
-\hline
-{\em Valor} & do nó a ser deletado \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{social_8h_a86d192f1655ca8ea2b7a0ef1571295fd}\label{social_8h_a86d192f1655ca8ea2b7a0ef1571295fd}} 
-\index{social.h@{social.h}!deleteB@{deleteB}}
-\index{deleteB@{deleteB}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{deleteB()}{deleteB()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structnodeB}{nodeB}}$\ast$ deleteB (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeB}{nodeB}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
-
-
-
-Função que deleta um nó de uma B\+ST de tipo B. 
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em head} & Ponteiro para o nó cabeça da B\+ST \\
-\hline
-{\em data} & Valor do nó a ser deletado \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Retorna}
-Ponteiro para o nó cabeça da B\+ST modificada 
-\end{DoxyReturn}
 \mbox{\Hypertarget{social_8h_a982806897c10c78fd70e92331fa6f0a0}\label{social_8h_a982806897c10c78fd70e92331fa6f0a0}} 
 \index{social.h@{social.h}!find@{find}}
 \index{find@{find}!social.h@{social.h}}
@@ -206,23 +129,6 @@ Função que busca em uma B\+ST do tipo B um determinado node pelo seu valor.
 \begin{DoxyReturn}{Retorna}
 Ponteiro para o nó buscado caso dê certo, caso contrário será N\+U\+LL 
 \end{DoxyReturn}
-\mbox{\Hypertarget{social_8h_a15fd7a22b54eaa5ddd084cf3d5a3a5be}\label{social_8h_a15fd7a22b54eaa5ddd084cf3d5a3a5be}} 
-\index{social.h@{social.h}!info@{info}}
-\index{info@{info}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{info()}{info()}}
-{\footnotesize\ttfamily void info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
-
-
-
-Função que busca um nó e imprime todos os seus dados. 
-
-
-\begin{DoxyParams}{Parâmetros}
-{\em head} & Ponteiro para o nó cabeça da B\+ST em que este nó está inserido \\
-\hline
-{\em data} & Valor do nó a ser mostrado \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{social_8h_afd24a78dea125213f054fcc154e7d0aa}\label{social_8h_afd24a78dea125213f054fcc154e7d0aa}} 
 \index{social.h@{social.h}!insertA@{insertA}}
 \index{insertA@{insertA}!social.h@{social.h}}
@@ -240,6 +146,23 @@ Função que dada uma B\+ST do tipo A, insere um novo nó no local apropriado.
 {\em data} & Valor do nó a ser inserido \\
 \hline
 {\em nome} & Nome da pessoa a ser cadastrada \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{social_8h_aafee258cdaa10980e5f54f98b2a93c0c}\label{social_8h_aafee258cdaa10980e5f54f98b2a93c0c}} 
+\index{social.h@{social.h}!insertB\_aux@{insertB\_aux}}
+\index{insertB\_aux@{insertB\_aux}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{insertB\_aux()}{insertB\_aux()}}
+{\footnotesize\ttfamily void insert\+B\+\_\+aux (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeB}{nodeB}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Função auxiliar à insertB, faz um trabalho similar a insertA. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em head} & Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido \\
+\hline
+{\em data} & Valor do nó a ser inserido \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{social_8h_a64988677eb158bf4962b51bc2fdd90d0}\label{social_8h_a64988677eb158bf4962b51bc2fdd90d0}} 
@@ -261,23 +184,26 @@ Função que dada uma B\+ST do tipo A, cria uma conexão entre dois de seus nós
 {\em p2} & Valor do nó de tipo A (2) \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{social_8h_aafee258cdaa10980e5f54f98b2a93c0c}\label{social_8h_aafee258cdaa10980e5f54f98b2a93c0c}} 
-\index{social.h@{social.h}!insertB\_aux@{insertB\_aux}}
-\index{insertB\_aux@{insertB\_aux}!social.h@{social.h}}
-\subsubsection{\texorpdfstring{insertB\_aux()}{insertB\_aux()}}
-{\footnotesize\ttfamily void insert\+B\+\_\+aux (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeB}{nodeB}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{social_8h_af062feb0430f0b531793acd4c82b6017}\label{social_8h_af062feb0430f0b531793acd4c82b6017}} 
+\index{social.h@{social.h}!consulta\_amizade@{consulta\_amizade}}
+\index{consulta\_amizade@{consulta\_amizade}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{consulta\_amizade()}{consulta\_amizade()}}
+{\footnotesize\ttfamily int consulta\+\_\+amizade (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{a,  }\item[{int}]{b }\end{DoxyParamCaption})}
 
 
 
-Função auxiliar à insertB, faz um trabalho similar a insertA. 
+Função que verifica se dois nó de tipo A possuem conexão através de seus nós de tipo B. 
 
 
 \begin{DoxyParams}{Parâmetros}
-{\em head} & Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido \\
+{\em p1} & Pessoa 1 \\
 \hline
-{\em data} & Valor do nó a ser inserido \\
+{\em p2} & Pessoa 2 \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 caso exista a conexão, 0 caso contrário 
+\end{DoxyReturn}
 \mbox{\Hypertarget{social_8h_aa0124495626522220cc54444764de795}\label{social_8h_aa0124495626522220cc54444764de795}} 
 \index{social.h@{social.h}!print\_ordemA@{print\_ordemA}}
 \index{print\_ordemA@{print\_ordemA}!social.h@{social.h}}
@@ -306,5 +232,79 @@ Função que imprime no terminal os id\textquotesingle{}s de uma B\+ST do tipo B
 
 \begin{DoxyParams}{Parâmetros}
 {\em head} & Ponteiro para a cabeça da B\+ST do tipo B \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{social_8h_a15fd7a22b54eaa5ddd084cf3d5a3a5be}\label{social_8h_a15fd7a22b54eaa5ddd084cf3d5a3a5be}} 
+\index{social.h@{social.h}!info@{info}}
+\index{info@{info}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{info()}{info()}}
+{\footnotesize\ttfamily void info (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Função que busca um nó e imprime todos os seus dados. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em head} & Ponteiro para o nó cabeça da B\+ST em que este nó está inserido \\
+\hline
+{\em data} & Valor do nó a ser mostrado \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{social_8h_a86d192f1655ca8ea2b7a0ef1571295fd}\label{social_8h_a86d192f1655ca8ea2b7a0ef1571295fd}} 
+\index{social.h@{social.h}!deleteB@{deleteB}}
+\index{deleteB@{deleteB}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{deleteB()}{deleteB()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnodeB}{nodeB}}$\ast$ deleteB (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeB}{nodeB}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Função que deleta um nó de uma B\+ST de tipo B. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em head} & Ponteiro para o nó cabeça da B\+ST \\
+\hline
+{\em data} & Valor do nó a ser deletado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Ponteiro para o nó cabeça da B\+ST modificada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{social_8h_af7b6f00991f2441eb9b2fb22ecc388f0}\label{social_8h_af7b6f00991f2441eb9b2fb22ecc388f0}} 
+\index{social.h@{social.h}!deleteA@{deleteA}}
+\index{deleteA@{deleteA}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{deleteA()}{deleteA()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structnodeA}{nodeA}}$\ast$ deleteA (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Função que deleta um nó de uma B\+ST de tipo A. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em head} & Ponteiro para o nó cabeça da B\+ST \\
+\hline
+{\em data} & Valor do nó a ser deletado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Ponteiro para o nó cabeça da B\+ST modificada 
+\end{DoxyReturn}
+\mbox{\Hypertarget{social_8h_ac8569128891422527f361e58dbf6a146}\label{social_8h_ac8569128891422527f361e58dbf6a146}} 
+\index{social.h@{social.h}!deleteAmgs@{deleteAmgs}}
+\index{deleteAmgs@{deleteAmgs}!social.h@{social.h}}
+\subsubsection{\texorpdfstring{deleteAmgs()}{deleteAmgs()}}
+{\footnotesize\ttfamily void delete\+Amgs (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structnodeA}{nodeA}} $\ast$}]{head,  }\item[{int}]{data }\end{DoxyParamCaption})}
+
+
+
+Função que deleta um nó de todas as B\+S\+Ts de Amizades de todos os nós de uma B\+ST de tipo A. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em head} & Ponteiro para o nó cabeça da B\+ST de tipo A \\
+\hline
+{\em Valor} & do nó a ser deletado \\
 \hline
 \end{DoxyParams}

@@ -3,8 +3,8 @@
  * @brief Header de funções do Social-BST
 */
 
-/** 
- * @brief Node A, utilizado na BST principal que guarda as informações sobre cada pessoa 
+/**
+ * @brief Node A, utilizado na BST principal que guarda as informações sobre cada pessoa
 */
 struct nodeA {
     int data; /**< Valor do node*/
@@ -16,7 +16,7 @@ struct nodeA {
 };
 
 /** 
- * Node B, utilizado nas BSTs que guardam as amizades de cada pessoa 
+ * @brief Node B, utilizado nas BSTs que guardam as amizades de cada pessoa 
 */
 struct nodeB {
     int data; /**< Valor do node*/
@@ -345,7 +345,7 @@ struct nodeA *deleteA(struct nodeA *head, int data){
 /**
  * \brief Função que deleta um nó de todas as BSTs de Amizades de todos os nós de uma BST de tipo A
  * @param head Ponteiro para o nó cabeça da BST de tipo A
- * @param Valor do nó a ser deletado
+ * @param data Valor do nó a ser deletado
 */
 void deleteAmgs(struct nodeA *head, int data){
     if (head != NULL)
@@ -353,5 +353,15 @@ void deleteAmgs(struct nodeA *head, int data){
         head->amgs = deleteB(head->amgs, data);
         deleteAmgs(head->menor, data);
         deleteAmgs(head->maior, data);
+    }
+}
+
+int dfs(int **matriz, int *marca, int inicio, int tam) {
+	marca[inicio] = 1;
+	for (int i = 1; i <= tam; i++){
+	    if(matriz[inicio][i] && !marca[i]) {
+		    printf("\n %d->%d",v,i);
+		    int x = dfs(matriz, marca, i, tam);
+	    }
     }
 }
