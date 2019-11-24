@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
             puts("help - Mostra ajuda com comandos");
             puts("new x - Adiciona uma nova pessoa (x) na rede");
             puts("del x - Deleta uma pessoa (x) da rede");
-            puts("bsc x - Busca as informações de x");
+            puts("src x - Busca as informações de x");
             puts("nfd x y - Adiciona uma nova amizade entre (x) e (y)");
             puts("dfd x y - Deleta a amizade entre (x) e (y)");
             puts("chk x y - Verifica se existe amizade entre (x) e (y)");
@@ -40,6 +40,7 @@ int main(int argc, char const *argv[])
             {
                 insertA(head, count, cmd+4);
             }
+            printf("%s cadastrado.\nID: %d\n", cmd+4, count);
             count += 1;
         }
         else if (!strncmp(cmd, "nfd", 3))
@@ -55,11 +56,11 @@ int main(int argc, char const *argv[])
             int res = consulta_amizade(head, p1, p2);
             if (res)
             {
-                puts("Há conexão entre os dois.");
+                puts("Há amizade entre os dois.");
             }
             else
             {
-                puts("Não há conexão entre os dois.");
+                puts("Não há amizade entre os dois.");
             }
         }
 
@@ -68,7 +69,7 @@ int main(int argc, char const *argv[])
             print_ordemA(head);
             puts("");
         }
-        else if (!strncmp(cmd, "bsc", 3))
+        else if (!strncmp(cmd, "src", 3))
         {
 
             int p1;
@@ -100,6 +101,6 @@ int main(int argc, char const *argv[])
             break;
         }
     }
-
+    memset(cmd, 0, sizeof(cmd));
     return 0;
 }

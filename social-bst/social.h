@@ -7,7 +7,7 @@
  * @brief Node A, utilizado na BST principal que guarda as informações sobre cada pessoa
 */
 struct nodeA {
-    int data; /**< Valor do node*/
+    int id; /**< Valor do node*/
     char nome[101]; /**< Nome da pessoa*/
     struct nodeA *pai; /**< Ponteiro para o node diretamente acima (pai)*/
     struct nodeA *menor; /**< Ponteiro para o node menor*/
@@ -19,7 +19,7 @@ struct nodeA {
  * @brief Node B, utilizado nas BSTs que guardam as amizades de cada pessoa 
 */
 struct nodeB {
-    int data; /**< Valor do node*/
+    int id; /**< Valor do node*/
     struct nodeB *pai; /**< Ponteiro para o node diretamente acima (pai)*/
     struct nodeB *menor; /**< Ponteiro para o node menor*/
     struct nodeB *maior; /**< Ponteiro para o node maior*/
@@ -27,15 +27,15 @@ struct nodeB {
 
 /**
  * \brief Função auxiliar que alloca em memoria um espaço para um Node A
- * @param data Valor do node
+ * @param id Valor do node
  * @param nome Nome associado ao node
  * @return Ponteiro para o novo nó
 */
-struct nodeA* allocA(int data, char *nome){
+struct nodeA* allocA(int id, char *nome){
     struct nodeA *new = (struct nodeA *) malloc(sizeof(struct nodeA));
     
     strcpy(new->nome, nome);
-    new->data = data;
+    new->id = id;
 
     new->maior = NULL;
     new->menor = NULL;
@@ -46,12 +46,12 @@ struct nodeA* allocA(int data, char *nome){
 }
 /**
  * \brief Função auxiliar que alloca em memoria um espaço para um Node B
- * @param data Valor do node
+ * @param id Valor do node
  * @return Ponteiro para o novo nó
 */
-struct nodeB* allocB(int data){
+struct nodeB* allocB(int id){
     struct nodeB *new = (struct nodeB *) malloc(sizeof(struct nodeB));
-    new->data = data;
+    new->id = id;
     new->pai = NULL;
     new->maior = NULL;
     new->menor = NULL;
@@ -61,36 +61,36 @@ struct nodeB* allocB(int data){
 /**
  * \brief Função que busca em uma BST do tipo A um determinado node pelo seu valor
  * @param head Ponteiro para um nó inicial de tipo A que será percorrido
- * @param data Valor do nó que deve ser buscado
+ * @param id Valor do nó que deve ser buscado
  * @return Ponteiro para o nó buscado caso dê certo, caso contrário será NULL
 */
-struct nodeA* find(struct nodeA* head, int data)
+struct nodeA* find(struct nodeA* head, int id)
 {
     if (head == NULL)
     {
         return NULL;
     }
     
-    if (head->data == data)
+    if (head->id == id)
     {
        return head;
     }
 
-    if (head->data < data)
+    if (head->id < id)
     {
-       return find(head->maior, data);
+       return find(head->maior, id);
     }
 
-    return find(head->menor, data);
+    return find(head->menor, id);
 }
 
 /**
  * \brief Função que busca em uma BST do tipo B um determinado node pelo seu valor
  * @param head Ponteiro para um nó inicial de tipo B que será percorrido
- * @param data Valor do nó que deve ser buscado
+ * @param id Valor do nó que deve ser buscado
  * @return Ponteiro para o nó buscado caso dê certo, caso contrário será NULL
 */
-struct nodeB* findB(struct nodeB* head, int data)
+struct nodeB* findB(struct nodeB* head, int id)
 {
 
     if (head == NULL)
@@ -98,74 +98,74 @@ struct nodeB* findB(struct nodeB* head, int data)
         return NULL;
     }
     
-    if (head->data == data)
+    if (head->id == id)
     {
        return head;
     }
 
-    if (head->data < data)
+    if (head->id < id)
     {
-       return findB(head->maior, data);
+       return findB(head->maior, id);
     }
 
-    return findB(head->menor, data);
+    return findB(head->menor, id);
 }
 
 /**
  * \brief Função que dada uma BST do tipo A, insere um novo nó no local apropriado
  * @param head Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido
- * @param data Valor do nó a ser inserido
+ * @param id Valor do nó a ser inserido
  * @param nome Nome da pessoa a ser cadastrada
 */
-void insertA(struct nodeA *head, int data, char *nome){
-    if (head->data > data)
+void insertA(struct nodeA *head, int id, char *nome){
+    if (head->id > id)
     {
         if (head->menor == NULL)
         {
-            head->menor = allocA(data, nome);
+            head->menor = allocA(id, nome);
             head->menor->pai = head;
             return;
         }
 ;
-        insertA(head->menor, data, nome);
+        insertA(head->menor, id, nome);
     }
     else
     {
         if (head->maior == NULL)
         {
-            head->maior = allocA(data, nome);
+            head->maior = allocA(id, nome);
             head->maior->pai = head;
             return;
         }
-        insertA(head->maior, data, nome);
+        insertA(head->maior, id, nome);
     }
 }
 /**
  * \brief Função auxiliar à insertB, faz um trabalho similar a insertA
  * @param head Ponteiro para o nó de tipo A a partir do qual o novo nó será inserido
- * @param data Valor do nó a ser inserido 
+ * @param id Valor do nó a ser inserido 
 */
-void insertB_aux(struct nodeB *head, int data){
-    if (head->data > data)
+void insertB_aux(struct nodeB *head, int id){
+    if (head->id > id)
     {
         if (head->menor == NULL)
         {
-            head->menor = allocB(data);
+            head->menor = allocB(id);
             head->menor->pai = head;
             return;
         }
 ;
-        insertB_aux(head->menor, data);
+        insertB_aux(head->menor, id);
     }
     else
     {
         if (head->maior == NULL)
         {
-            head->maior = allocB(data);
+            head->maior = allocB(id);
             head->maior->pai = head;
             return;
         }
-        insertB_aux(head->maior, data);
+        insertB_aux(head->maior, id);
     }
 }
 /**
@@ -263,7 +263,7 @@ void print_ordemA(struct nodeA *head)
     if (head != NULL)
     {
         print_ordemA(head->menor);
-        printf("%d %s\n", head->data, head->nome);
+        printf("%d %s\n", head->id, head->nome);
         print_ordemA(head->maior);
     }
 }
@@ -277,7 +277,7 @@ void print_ordemB(struct nodeB *head)
     if (head != NULL)
     {
         print_ordemB(head->menor);
-        printf("%d ", head->data);
+        printf("%d ", head->id);
         print_ordemB(head->maior);
     }
 }
@@ -285,17 +285,17 @@ void print_ordemB(struct nodeB *head)
 /**
  * \brief Função que busca um nó e imprime todos os seus dados
  * @param head Ponteiro para o nó cabeça da BST em que este nó está inserido
- * @param data Valor do nó a ser mostrado
+ * @param id Valor do nó a ser mostrado
 */
-void info(struct nodeA *head, int data){
-    struct nodeA *ptr = find(head, data);
+void info(struct nodeA *head, int id){
+    struct nodeA *ptr = find(head, id);
     if (ptr == NULL)
     {
         puts("Pessoa não encontrada");
         return;
     }
     
-    printf("%s\nID: %d\nAmizades: ", ptr->nome, ptr->data);
+    printf("%s\nID: %d\nAmizades: ", ptr->nome, ptr->id);
     print_ordemB(ptr->amgs);
     puts("");
 }
@@ -304,20 +304,20 @@ void info(struct nodeA *head, int data){
 /**
  * \brief Função que deleta um nó de uma BST de tipo B
  * @param head Ponteiro para o nó cabeça da BST
- * @param data Valor do nó a ser deletado
+ * @param id Valor do nó a ser deletado
  * @return Ponteiro para o nó cabeça da BST modificada
 */
-struct nodeB *deleteB(struct nodeB *head, int data){
+struct nodeB *deleteB(struct nodeB *head, int id){
     if (head == NULL){
         return head;
     } 
 
-    if (data < head->data){
-        head->menor = deleteB(head->menor, data); 
+    if (id < head->id){
+        head->menor = deleteB(head->menor, id); 
     }
 
-    else if (data > head->data){
-        head->maior = deleteB(head->maior, data); 
+    else if (id > head->id){
+        head->maior = deleteB(head->maior, id); 
     }
 
     else
@@ -342,8 +342,8 @@ struct nodeB *deleteB(struct nodeB *head, int data){
             tmp = tmp->menor;
         }
 
-        head->data = tmp->data;
-        head->maior = deleteB(head->maior, tmp->data); 
+        head->id = tmp->id;
+        head->maior = deleteB(head->maior, tmp->id); 
     } 
     return head;
 }
@@ -351,20 +351,20 @@ struct nodeB *deleteB(struct nodeB *head, int data){
 /**
  * \brief Função que deleta um nó de uma BST de tipo A
  * @param head Ponteiro para o nó cabeça da BST
- * @param data Valor do nó a ser deletado
+ * @param id Valor do nó a ser deletado
  * @return Ponteiro para o nó cabeça da BST modificada
 */
-struct nodeA *deleteA(struct nodeA *head, int data){
+struct nodeA *deleteA(struct nodeA *head, int id){
     if (head == NULL){
         return head;
     } 
 
-    if (data < head->data){
-        head->menor = deleteA(head->menor, data); 
+    if (id < head->id){
+        head->menor = deleteA(head->menor, id); 
     }
 
-    else if (data > head->data){
-        head->maior = deleteA(head->maior, data); 
+    else if (id > head->id){
+        head->maior = deleteA(head->maior, id); 
     }
 
     else
@@ -389,22 +389,22 @@ struct nodeA *deleteA(struct nodeA *head, int data){
             tmp = tmp->menor;
         }
 
-        head->data = tmp->data;
+        head->id = tmp->id;
         head->amgs = tmp->amgs;
-        head->maior = deleteA(head->maior, tmp->data); 
+        head->maior = deleteA(head->maior, tmp->id); 
     } 
     return head;
 }
 /**
  * \brief Função que deleta um nó de todas as BSTs de Amizades de todos os nós de uma BST de tipo A
  * @param head Ponteiro para o nó cabeça da BST de tipo A
- * @param data Valor do nó a ser deletado
+ * @param id Valor do nó a ser deletado
 */
-void deleteAmgs(struct nodeA *head, int data){
+void deleteAmgs(struct nodeA *head, int id){
     if (head != NULL)
     {
-        head->amgs = deleteB(head->amgs, data);
-        deleteAmgs(head->menor, data);
-        deleteAmgs(head->maior, data);
+        head->amgs = deleteB(head->amgs, id);
+        deleteAmgs(head->menor, id);
+        deleteAmgs(head->maior, id);
     }
 }
