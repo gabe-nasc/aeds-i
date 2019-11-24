@@ -93,6 +93,24 @@ int main(int argc, char const *argv[])
             struct nodeA *ptr1 = find(head, p1);
             struct nodeA *ptr2 = find(head, p2);
 
+            if (ptr1 == NULL && ptr2 == NULL)
+            {
+                printf("%d e %d não encontrados\n", p1, p2);
+                continue;
+            }
+
+            if (ptr1 == NULL)
+            {
+                printf("%d não encontrado\n", p1);
+                continue;
+            }
+            
+            if (ptr2 == NULL)
+            {
+                printf("%d não encontrado\n", p2);
+                continue;
+            }
+
             ptr1->amgs = deleteB(ptr1->amgs, p2);
             ptr2->amgs = deleteB(ptr2->amgs, p1);
         }
