@@ -66,11 +66,15 @@ struct nodeB* allocB(int data){
 */
 struct nodeA* find(struct nodeA* head, int data)
 {
-
-    if (head == NULL || head->data == data)
+    if (head == NULL)
+    {
+        return NULL;
+    }
+    
+    if (head->data == data)
     {
        return head;
-     }
+    }
 
     if (head->data < data)
     {
@@ -89,10 +93,15 @@ struct nodeA* find(struct nodeA* head, int data)
 struct nodeB* findB(struct nodeB* head, int data)
 {
 
-    if (head == NULL || head->data == data)
+    if (head == NULL)
+    {
+        return NULL;
+    }
+    
+    if (head->data == data)
     {
        return head;
-     }
+    }
 
     if (head->data < data)
     {
@@ -169,6 +178,24 @@ void insertB(struct nodeA *head, int p1, int p2){
     struct nodeA *ptr1 = find(head, p1);
     struct nodeA *ptr2 = find(head, p2);
     
+    if (ptr1 == NULL && ptr2 == NULL)
+    {
+        printf("%d e %d não foram encontrados\n", p1, p2);
+        return;
+    }
+    
+    else if (ptr1 == NULL)
+    {
+        printf("%d não encontrado\n", p1);
+        return;
+    }
+    else if (ptr2 == NULL)
+    {
+        printf("%d não encontrado\n", p2);
+        return;
+    }
+
+    
     if (ptr1->amgs == NULL)
     {
         ptr1->amgs = allocB(p2);
@@ -197,11 +224,31 @@ void insertB(struct nodeA *head, int p1, int p2){
 */
 int consulta_amizade(struct nodeA *head, int a, int b){
     struct nodeA *p1 = find(head, a);
+    struct nodeA *p2 = find(head, b);
+    
+    if (p1 == NULL && p2 == NULL)
+    {
+        printf("%d e %d não encontrados\n", a, b);
+        return 0;
+    }
+
+    if (p1 == NULL)
+    {
+        printf("%d não encontrado\n", a);
+        return 0;
+    }
+    
+    if (p2 == NULL)
+    {
+        printf("%d não encontrado\n", b);
+        return 0;
+    }
 
     if (findB(p1->amgs, b) != NULL)
     {
         return 1;
     }
+
     else
     {
         return 0;
@@ -242,6 +289,12 @@ void print_ordemB(struct nodeB *head)
 */
 void info(struct nodeA *head, int data){
     struct nodeA *ptr = find(head, data);
+    if (ptr == NULL)
+    {
+        puts("Pessoa não encontrada");
+        return;
+    }
+    
     printf("%s\nID: %d\nAmizades: ", ptr->nome, ptr->data);
     print_ordemB(ptr->amgs);
     puts("");
@@ -353,15 +406,5 @@ void deleteAmgs(struct nodeA *head, int data){
         head->amgs = deleteB(head->amgs, data);
         deleteAmgs(head->menor, data);
         deleteAmgs(head->maior, data);
-    }
-}
-
-int dfs(int **matriz, int *marca, int inicio, int tam) {
-	marca[inicio] = 1;
-	for (int i = 1; i <= tam; i++){
-	    if(matriz[inicio][i] && !marca[i]) {
-		    printf("\n %d->%d",v,i);
-		    int x = dfs(matriz, marca, i, tam);
-	    }
     }
 }

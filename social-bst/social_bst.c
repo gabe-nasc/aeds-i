@@ -9,23 +9,25 @@ int main(int argc, char const *argv[])
     int count = 1; // Contador de pessoas
     char cmd[120]; // Comando inserido pelo usuário
 
+    puts("Binary Seach Tree - Social Network");
+    puts("Digite 'help' para ver todos os comandos");
     while (1)
     {
         printf(">> ");
-        scanf("%[^\n]%*c", cmd);
-        puts("");
+        scanf(" %[^\n]%*c", cmd);
 
         // Imprime a lista de comandos suportados
         if (!strcmp(cmd, "help"))
         {
-            puts("help - mostra ajuda com comandos");
-            puts("new x - adiciona uma nova pessoa (x) na rede");
-            puts("del x - deleta uma pessoa (x) da rede");
-            puts("bsc x - busca as informações de x");
-            puts("nfd x y - adicionar uma nova amizade entre (x) e (y)");
-            puts("dfd x y - deleta a amizade entre (x) e (y)");
-            puts("chk x y - checar se existe amizade entre (x) e (y)");
-            puts("prt - imprime todas as pessoas na rede");
+            puts("help - Mostra ajuda com comandos");
+            puts("new x - Adiciona uma nova pessoa (x) na rede");
+            puts("del x - Deleta uma pessoa (x) da rede");
+            puts("bsc x - Busca as informações de x");
+            puts("nfd x y - Adiciona uma nova amizade entre (x) e (y)");
+            puts("dfd x y - Deleta a amizade entre (x) e (y)");
+            puts("chk x y - Verifica se existe amizade entre (x) e (y)");
+            puts("prt - Imprime todas as pessoas na rede");
+            puts("quit - Sair do programa");
         }
         //
         else if (!strncmp(cmd, "new", 3))
@@ -50,8 +52,17 @@ int main(int argc, char const *argv[])
         {
             int p1, p2;
             sscanf(cmd, "%*s %d %d", &p1, &p2);
-            printf("%d\n", consulta_amizade(head, p1, p2));
+            int res = consulta_amizade(head, p1, p2);
+            if (res)
+            {
+                puts("Há conexão entre os dois.");
+            }
+            else
+            {
+                puts("Não há conexão entre os dois.");
+            }
         }
+
         else if (!strncmp(cmd, "prt", 3))
         {
             print_ordemA(head);
