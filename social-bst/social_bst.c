@@ -48,6 +48,7 @@ int main(int argc, char const *argv[])
             int p1, p2;
             sscanf(cmd, "%*s %d %d", &p1, &p2);
             insertB(head, p1, p2);
+            puts("Amizade inserida.");
         }
         else if (!strncmp(cmd, "chk", 3))
         {
@@ -83,6 +84,7 @@ int main(int argc, char const *argv[])
             sscanf(cmd, "%*s %d", &p1);
             head = deleteA(head, p1);
             deleteAmgs(head, p1);
+            puts("Usuário deletado.");
         }
         else if (!strncmp(cmd, "dfd", 3))
         {
@@ -113,6 +115,7 @@ int main(int argc, char const *argv[])
 
             ptr1->amgs = deleteB(ptr1->amgs, p2);
             ptr2->amgs = deleteB(ptr2->amgs, p1);
+            puts("Amizade deletada.");
         }
         else if (!strcmp(cmd, "quit"))
         {
