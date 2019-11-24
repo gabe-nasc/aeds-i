@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['find',['find',['../social_8h.html#a982806897c10c78fd70e92331fa6f0a0',1,'social.h']]],
-  ['findb',['findB',['../social_8h.html#afe9403e5b8edfb2538aba7ecb40c1662',1,'social.h']]]
+  ['find',['find',['../social_8h.html#a3329efeddbd0f6345d9dbf918e835c9e',1,'social.h']]],
+  ['findb',['findB',['../social_8h.html#a088773d8030f46fab333b18b23e7920a',1,'social.h']]]
 ];
